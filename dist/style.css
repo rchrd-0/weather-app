@@ -1,0 +1,73 @@
+html,
+body,
+div,
+span,
+h1,
+header,
+main,
+section,
+nav,
+h2,
+p,
+ul,
+li,
+a,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: grey;
+}
+
+#details {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: pink;
+}
+
+#search {
+  display: flex;
+  flex-direction: column;
+}
+
+#current-conditions {
+  background-color: honeydew;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 5fr;
+}
+
+#description {
+  grid-area: 1 / 1 / span 1 / -1;
+}
+
+#current-temp {
+  grid-area: 2 / 1 / span 1 / span 1;
+}
+
+#conditions {
+  grid-area: 2 / 2 / span 1 / span 1;
+  display: flex;
+  flex-direction: column;
+}

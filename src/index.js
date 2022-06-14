@@ -1,4 +1,5 @@
 import getWeather from './modules/data';
+import renderDisplay from './modules/display';
 
 const search = document.querySelector('#search-city');
 
@@ -8,9 +9,9 @@ async function searchForCity(e) {
     search.value = '';
     try {
       const weather = await getWeather(query);
-      console.log(weather);
+      renderDisplay(weather);
     } catch (error) {
-      console.error(error);
+      return console.error(error);
     }
   }
 }

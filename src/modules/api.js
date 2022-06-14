@@ -6,5 +6,6 @@ export default async function fetchData(query) {
   if (!response.ok) {
     throw new Error(`At fetchData — ${response.statusText}`);
   }
-  return response.json();
+  const parse = await response.json();
+  return parse;
 }

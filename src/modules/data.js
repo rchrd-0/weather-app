@@ -13,6 +13,7 @@ function processData(input) {
   const output = {
     name: input.name,
     country: input.sys.country,
+    time: input.dt,
     weather: {
       description: input.weather[0].description,
       ...temperature,
