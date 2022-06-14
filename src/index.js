@@ -1,5 +1,5 @@
 import getWeather from './modules/data';
-import renderDisplay from './modules/display';
+import { renderDisplay, displayError } from './modules/display';
 
 const search = document.querySelector('#search-city');
 
@@ -11,7 +11,8 @@ async function searchForCity(e) {
       const weather = await getWeather(query);
       renderDisplay(weather);
     } catch (error) {
-      console.log('foo')
+      displayError(true);
+      console.error('Location not found')
     }
   }
 }

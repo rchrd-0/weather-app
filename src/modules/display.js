@@ -22,6 +22,7 @@ const renderDetails = (data) => {
   location.textContent = city.join(', ');
 };
 
+
 const renderCurrent = (data) => {
   const description = document.querySelector('#description');
   description.textContent = data.weather.description;
@@ -40,7 +41,19 @@ const renderCurrent = (data) => {
   }
 };
 
-export default function renderDisplay(data) {
+const displayError = (error) => {
+  const span = document.querySelector('#input-error');
+  if (error) {
+    span.textContent = 'Location not found'
+  } else {
+    span.textContent = '';
+  }
+}
+
+const renderDisplay = (data) => {
   renderDetails(data);
   renderCurrent(data);
+  displayError(false);
 }
+
+export { renderDisplay, displayError}
