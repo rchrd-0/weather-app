@@ -1,10 +1,18 @@
-import getWeatherData from './modules/api';
+import getWeather from './modules/data';
 
 const search = document.querySelector('#search-city');
-search.addEventListener('keydown', (e) => {
-  const { value } = search;
-  if (e.code === 'Enter' && value.length > 0) {
-    getWeatherData(value);
+
+async function searchForCity(e) {
+  const query = search.value;
+  if (e.code === 'Enter' && query.length > 0) {
     search.value = '';
+    try {
+      const weather = await getWeather(query);
+      console.log(weather);
+    } catch (error) {
+      console.error(error);
+    }
   }
-});
+}
+
+search.addEventListener('keydown', (e) => searchForCity(e));
