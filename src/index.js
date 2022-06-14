@@ -11,9 +11,15 @@ async function searchForCity(e) {
       const weather = await getWeather(query);
       renderDisplay(weather);
     } catch (error) {
-      return console.error(error);
+      console.log('foo')
     }
   }
 }
 
+async function initialLoad() {
+  const weather = await getWeather('hong kong');
+  renderDisplay(weather);
+}
+
 search.addEventListener('keydown', (e) => searchForCity(e));
+window.addEventListener('load', initialLoad)
