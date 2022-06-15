@@ -28,17 +28,17 @@ const parseWeather = (data) => {
 };
 
 const parseForecast = (data) => {
-  const { daily } = data;
-  const forecast = [];
-  daily.forEach((day) => {
+  const days = data.daily;
+  const daily = [];
+  days.forEach((day) => {
     const date = day.dt;
     const weatherIcon = day.weather[0].icon;
     const temps = roundTemps({ min: day.temp.min, max: day.temp.max });
-    forecast.push({ date, weatherIcon, temps });
+    daily.push({ date, weatherIcon, temps });
   });
   return {
     offset: data.timezone_offset,
-    forecast,
+    daily,
   };
 };
 
@@ -46,6 +46,5 @@ export default async function getData(query) {
   const data = await fetchData(query);
   data.weather = parseWeather(data.weather);
   data.forecast = parseForecast(data.forecast);
-  console.log(data);
   return data;
 }

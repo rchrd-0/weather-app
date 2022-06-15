@@ -3,26 +3,34 @@ import { renderDisplay, displayError } from './modules/display';
 
 const search = document.querySelector('#search-city');
 
-
 const searchForCity = async (e) => {
   const query = search.value;
   if (e.code === 'Enter' && query.length > 0) {
     try {
       search.value = '';
       const weatherData = await getData(query);
-      return weatherData
-    }
-    catch (error) {
-      console.error(error)
+      renderDisplay(weatherData);
+    } catch (error) {
+      console.error(error);
+      displayError(true);
     }
   }
-}
+};
 
-// async function initialLoad() {
-//   const cities = ['sydney', 'hong kong', 'edinburgh', 'kuala lumpur'];
-//   const weather = await getWeather(cities[Math.floor(Math.random() * cities.length)]);
-//   renderDisplay(weather);
-// }
+const initialLoad = async () => {
+  const cities = [
+    'sydney',
+    'hong kong',
+    'edinburgh',
+    'kuala lumpur',
+    'munich',
+    'london',
+    'tokyo',
+  ];
+  const randomCity = cities[Math.floor(Math.random() * cities.length)];
+  const weatherData = await getData(randomCity);
+  renderDisplay(weatherData);
+};
 
 search.addEventListener('keydown', (e) => searchForCity(e));
-// window.addEventListener('load', initialLoad)
+window.addEventListener('load', initialLoad);
