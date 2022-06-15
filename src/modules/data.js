@@ -1,4 +1,4 @@
-import fetchData from './api'
+import fetchData from './api';
 
 function processData(input) {
   const temperature = {
@@ -14,6 +14,7 @@ function processData(input) {
     name: input.name,
     country: input.sys.country,
     time: input.dt,
+    timezone: input.timezone,
     weather: {
       description: input.weather[0].description,
       ...temperature,

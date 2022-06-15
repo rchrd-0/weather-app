@@ -12,13 +12,14 @@ async function searchForCity(e) {
       renderDisplay(weather);
     } catch (error) {
       displayError(true);
-      console.error('Location not found')
+      console.error(error)
     }
   }
 }
 
 async function initialLoad() {
-  const weather = await getWeather('hong kong');
+  const cities = ['sydney', 'hong kong', 'edinburgh', 'kuala lumpur'];
+  const weather = await getWeather(cities[Math.floor(Math.random() * cities.length)]);
   renderDisplay(weather);
 }
 

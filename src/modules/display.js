@@ -1,4 +1,5 @@
-import { format, fromUnixTime } from 'date-fns';
+import { format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 // {
 //   "name": "Hong Kong",
 //   "country": "HK",
@@ -12,16 +13,25 @@ import { format, fromUnixTime } from 'date-fns';
 //   }
 // }
 
+const getLocal = (data) => {
+  const localDate = formatInTimeZone(
+    (data.time + data.timezone) * 1000,
+    'UTC',
+    'yyyy-MM-dd, HH:mm'
+  );
+  return localDate;
+};
+
 const renderDetails = (data) => {
   const date = document.querySelector('#date');
-  const today = format(fromUnixTime(data.time), 'dd MMMM');
+  const localDate = getLocal(data);
+  const today = format(new Date(localDate), 'd MMMM');
   date.textContent = today;
 
   const location = document.querySelector('#location');
   const city = [data.name, data.country];
   location.textContent = city.join(', ');
 };
-
 
 const renderCurrent = (data) => {
   const description = document.querySelector('#description');
@@ -34,7 +44,7 @@ const renderCurrent = (data) => {
   const conditionValues = [
     data.weather.feelsLike,
     data.weather.humidity,
-    format(fromUnixTime(data.time), 'HH:mm'),
+    // format(new Date(((data.time ), 'HH:mm'),
   ];
   for (let i = 0; i < conditions.length; i++) {
     conditions[i].textContent = conditionValues[i];
@@ -43,17 +53,13 @@ const renderCurrent = (data) => {
 
 const displayError = (error) => {
   const span = document.querySelector('#input-error');
-  if (error) {
-    span.textContent = 'Location not found'
-  } else {
-    span.textContent = '';
-  }
-}
+  span.textContent = error ? 'Location not found' : '';
+};
 
 const renderDisplay = (data) => {
   renderDetails(data);
   renderCurrent(data);
   displayError(false);
-}
+};
 
-export { renderDisplay, displayError}
+export { renderDisplay, displayError };
