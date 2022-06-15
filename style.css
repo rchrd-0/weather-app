@@ -37,6 +37,10 @@ body {
   background-color: grey;
 }
 
+#main {
+  text-transform: uppercase;
+}
+
 #details {
   width: 300px;
   display: flex;
