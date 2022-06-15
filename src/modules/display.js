@@ -10,12 +10,21 @@ const getLocal = (time, offset) => {
   return localDate;
 };
 
+// const renderBackground = (data) => {
+//   const body = document.querySelector('body');
+//   const { time, offset } = data.weather;
+//   const localHour = Number(format(new Date(getLocal(time, offset)), 'HH'));
+//   body.dataset.hour = (localHour >= 17 || localHour <= 5) ? 0 : 1;
+// };
+
 const renderDetails = (data) => {
   const { weather } = data;
   const date = document.querySelector('#date');
+  const time = document.querySelector('#time');
   const localDate = getLocal(weather.time, weather.offset);
   const today = format(new Date(localDate), 'd MMMM');
   date.textContent = today;
+  time.textContent = format(new Date(localDate), 'HH:mm');
 
   const location = document.querySelector('#location');
   const cityCountry = [weather.name, weather.country];
@@ -24,16 +33,17 @@ const renderDetails = (data) => {
 
 const renderCurrent = (data) => {
   const { currentConditions } = data.weather;
-  const description = document.querySelector('#description');
-  description.textContent = currentConditions.description;
+  // const description = document.querySelector('#description');
+  // description.textContent = currentConditions.description;
 
   const currentTemp = document.querySelector('#current-temp');
-  currentTemp.textContent = currentConditions.current;
+  currentTemp.textContent = `${currentConditions.current} °C`;
 
   const conditions = document.querySelectorAll('#conditions > div');
   const conditionValues = [
-    currentConditions.feelsLike,
-    currentConditions.humidity,
+    `${currentConditions.description}`,
+    `${currentConditions.feelsLike} °C`,
+    `${currentConditions.humidity} %`,
   ];
   for (let i = 0; i < conditions.length; i++) {
     conditions[i].textContent = conditionValues[i];
@@ -69,6 +79,7 @@ const renderForecast = (data) => {
 const renderDisplay = (data) => {
   renderDetails(data);
   renderCurrent(data);
+  // renderBackground(data);
   renderForecast(data);
   displayError(false);
 };
