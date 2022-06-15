@@ -1,90 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./main.js" defer></script>
-  <title>The Odin Project—Weather App</title>
-</head>
-<body>
-  <div id="main">
-    <div id="details">
-      <div id="date"></div>
-      <div id="location"></div>
-      <div id="search">
-        <input type="text" name="search-city" id="search-city">
-        <span id="input-error"></span>
-      </div>
-    </div>
-    <div id="current-conditions">
-      <div id="description"></div>
-      <div id="current-temp"></div>
-      <div id="conditions">
-        <div id="feels-like"></div>
-        <div id="humidity"></div>
-      </div>
-    </div>
-    <div id="forecast-week">
-      <div class="card-daily">
-        <div class="day"></div>
-        <div class="icon"></div>
-        <div class="temps">
-          <div class="temp-min"></div>
-          <div class="temp-max"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" defer></script>
+    <title>The Odin Project—Weather App</title>
+  </head>
+  <body>
+    <main>
+      <section id="current">
+        <div id="details">
+          <div id="date-time">
+            <div id="date"></div>
+            <div id="time"></div>
+          </div>
+          <div id="location"></div>
+          <div id="search">
+            <input type="text" name="search-city" id="search-city" placeholder="Search"/>
+            <span id="input-error"></span>
+          </div>
         </div>
-      </div>
-      <div class="card-daily">
-        <div class="day"></div>
-        <div class="icon"></div>
-        <div class="temps">
-          <div class="temp-min"></div>
-          <div class="temp-max"></div>
+        <div id="current-conditions">
+          <div id="current-temp"></div>
+          <div id="conditions">
+            <div id="description"></div>
+            <div id="feels-like"></div>
+            <div id="humidity"></div>
+          </div>
         </div>
-      </div>
-      <div class="card-daily">
-        <div class="day"></div>
-        <div class="icon"></div>
-        <div class="temps">
-          <div class="temp-min"></div>
-          <div class="temp-max"></div>
+      </section>
+      <section id="forecast-week">
+        <div class="card-daily">
+          <div class="day"></div>
+          <div class="icon"></div>
+          <div class="temps">
+            <div class="temp-min"></div>
+            <div class="temp-max"></div>
+          </div>
         </div>
-      </div>
-      <div class="card-daily">
-        <div class="day"></div>
-        <div class="icon"></div>
-        <div class="temps">
-          <div class="temp-min"></div>
-          <div class="temp-max"></div>
+        <div class="card-daily">
+          <div class="day"></div>
+          <div class="icon"></div>
+          <div class="temps">
+            <div class="temp-min"></div>
+            <div class="temp-max"></div>
+          </div>
         </div>
-      </div>
-      <div class="card-daily">
-        <div class="day"></div>
-        <div class="icon"></div>
-        <div class="temps">
-          <div class="temp-min"></div>
-          <div class="temp-max"></div>
+        <div class="card-daily">
+          <div class="day"></div>
+          <div class="icon"></div>
+          <div class="temps">
+            <div class="temp-min"></div>
+            <div class="temp-max"></div>
+          </div>
         </div>
-      </div>
-      <div class="card-daily">
-        <div class="day"></div>
-        <div class="icon"></div>
-        <div class="temps">
-          <div class="temp-min"></div>
-          <div class="temp-max"></div>
+        <div class="card-daily">
+          <div class="day"></div>
+          <div class="icon"></div>
+          <div class="temps">
+            <div class="temp-min"></div>
+            <div class="temp-max"></div>
+          </div>
         </div>
-      </div>
-      <div class="card-daily">
-        <div class="day"></div>
-        <div class="icon"></div>
-        <div class="temps">
-          <div class="temp-min"></div>
-          <div class="temp-max"></div>
+        <div class="card-daily">
+          <div class="day"></div>
+          <div class="icon"></div>
+          <div class="temps">
+            <div class="temp-min"></div>
+            <div class="temp-max"></div>
+          </div>
         </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</body>
+        <div class="card-daily">
+          <div class="day"></div>
+          <div class="icon"></div>
+          <div class="temps">
+            <div class="temp-min"></div>
+            <div class="temp-max"></div>
+          </div>
+        </div>
+        <div class="card-daily">
+          <div class="day"></div>
+          <div class="icon"></div>
+          <div class="temps">
+            <div class="temp-min"></div>
+            <div class="temp-max"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

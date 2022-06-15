@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap");
+
 html,
 body,
 div,
@@ -30,51 +32,101 @@ html {
 }
 
 body {
+  /* display: flex; */
+  width: 100vw;
   height: 100vh;
-  display: flex;
-  /* flex-direction: column; */
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: grey;
+  font-family: 'Fira Sans', Helvetica, Arial, sans-serif;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("./assets/bg-0.jpg");
 }
 
-#main {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
   text-transform: uppercase;
 }
 
+#current {
+  color: #EBEFF5; 
+}
+
 #details {
-  width: 300px;
+  width: 500px;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  background-color: pink;
+}
+
+#location {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+#date-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+#current-conditions {
+  width: 500px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100px;
+  column-gap: 20px;
+}
+
+#current-temp {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+#current-temp {
+  align-self: center;
+  grid-area: 1 / 1 / span 1 / span 1;
+}
+
+#conditions {
+  grid-area: 1 / 2 / span 1 / span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #search {
   display: flex;
-  flex-direction: column;
+  gap: 20px;
 }
 
-#current-conditions {
-  width: 300px;
-  background-color: honeydew;
-  border: 1px solid black;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 5fr;
+input[type="text"] {
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  width: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: initial;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-family: inherit;
 }
 
-#description {
-  grid-area: 1 / 1 / span 1 / -1;
+input[type="text"]::placeholder {
+  color: white;
+  font-weight: 300;
 }
 
-#current-temp {
-  grid-area: 2 / 1 / span 1 / span 1;
+#input-error {
+  flex: 1;
+  align-self: center;
 }
 
-#conditions {
-  grid-area: 2 / 2 / span 1 / span 1;
-  display: flex;
-  flex-direction: column;
+input[type="text"]:focus {
+  outline: none;
 }
 
 #forecast-week {
