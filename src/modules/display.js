@@ -1,21 +1,9 @@
 import { format } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
-// {
-//   "name": "Hong Kong",
-//   "country": "HK",
-//   "weather": {
-//       "description": "moderate rain",
-//       "current": 26,
-//       "tempMin": 26,
-//       "tempMax": 27,
-//       "feelsLike": 26,
-//       "humidity": 88
-//   }
-// }
 
 const getLocal = (data) => {
   const localDate = formatInTimeZone(
-    (data.time + data.timezone) * 1000,
+    (data.time + data.offset) * 1000,
     'UTC',
     'yyyy-MM-dd, HH:mm'
   );
@@ -35,15 +23,15 @@ const renderDetails = (data) => {
 
 const renderCurrent = (data) => {
   const description = document.querySelector('#description');
-  description.textContent = data.weather.description;
+  description.textContent = data.currentConditions.description;
 
   const currentTemp = document.querySelector('#current-temp');
-  currentTemp.textContent = data.weather.current;
+  currentTemp.textContent = data.currentConditions.current;
 
   const conditions = document.querySelectorAll('#conditions > div');
   const conditionValues = [
-    data.weather.feelsLike,
-    data.weather.humidity,
+    data.currentConditions.feelsLike,
+    data.currentConditions.humidity,
     // format(new Date(((data.time ), 'HH:mm'),
   ];
   for (let i = 0; i < conditions.length; i++) {

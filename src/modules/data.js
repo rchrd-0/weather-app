@@ -1,31 +1,51 @@
 import fetchData from './api';
 
-function processData(input) {
-  const temperature = {
-    current: input.main.temp,
-    tempMin: input.main.temp_min,
-    tempMax: input.main.temp_max,
-    feelsLike: input.main.feels_like,
-  };
-  Object.keys(temperature).forEach((key) => {
-    temperature[key] = Math.round(temperature[key]);
+const roundTemps = (temps) => {
+  Object.keys(temps).forEach((key) => {
+    temps[key] = Math.round(temps[key]);
   });
-  const output = {
-    name: input.name,
-    country: input.sys.country,
-    time: input.dt,
-    timezone: input.timezone,
-    weather: {
-      description: input.weather[0].description,
-      ...temperature,
-      humidity: input.main.humidity,
+  return temps;
+};
+
+const parseWeather = (data) => {
+  const temps = {
+    current: data.main.temp,
+    tempMin: data.main.temp_min,
+    tempMax: data.main.temp_max,
+    feelsLike: data.main.feels_like,
+  };
+  return {
+    name: data.name,
+    country: data.sys.country,
+    time: data.dt,
+    offset: data.timezone,
+    currentConditions: {
+      description: data.weather[0].description,
+      ...roundTemps(temps),
+      humidity: data.main.humidity,
     },
   };
-  return output;
-}
+};
 
-export default async function getWeather(query) {
-  const response = await fetchData(query);
-  const data = processData(response);
+const parseForecast = (data) => {
+  const { daily } = data;
+  const forecast = [];
+  daily.forEach((day) => {
+    const date = day.dt;
+    const weatherIcon = day.weather[0].icon;
+    const temps = roundTemps({ min: day.temp.min, max: day.temp.max });
+    forecast.push({ date, weatherIcon, temps });
+  });
+  return {
+    offset: data.timezone_offset,
+    forecast,
+  };
+};
+
+export default async function getData(query) {
+  const data = await fetchData(query);
+  data.weather = parseWeather(data.weather);
+  data.forecast = parseForecast(data.forecast);
+  console.log(data);
   return data;
 }
