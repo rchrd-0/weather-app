@@ -26,7 +26,7 @@ const renderDetails = (data) => {
 
 const renderCurrent = (data) => {
   const { currentConditions } = data.weather;
-  
+
   const currentTemp = document.querySelector('#current-temp');
   currentTemp.textContent = `${currentConditions.current} °C`;
   const description = document.querySelector('#description');
@@ -51,7 +51,7 @@ const displayError = (error) => {
     span.classList.add('opacity-0');
     setTimeout(() => {
       span.textContent = '';
-    }, 200)
+    }, 200);
   }
 };
 
@@ -76,6 +76,18 @@ const renderForecast = (data) => {
   }
 };
 
+const setLoading = (bool) => {
+  const searchIcon = document.querySelector('#search-icon');
+  const loadIcon = document.querySelector('#load-icon');
+  if (bool) {
+    searchIcon.classList.add('visibility-hidden');
+    loadIcon.classList.remove('visibility-hidden');
+  } else {
+    loadIcon.classList.add('visibility-hidden');
+    searchIcon.classList.remove('visibility-hidden');
+  }
+};
+
 const renderDisplay = (data) => {
   renderDetails(data);
   renderCurrent(data);
@@ -83,4 +95,4 @@ const renderDisplay = (data) => {
   displayError(false);
 };
 
-export { renderDisplay, displayError };
+export { renderDisplay, displayError, setLoading };

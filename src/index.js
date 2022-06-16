@@ -1,5 +1,5 @@
 import getData from './modules/data';
-import { renderDisplay, displayError } from './modules/display';
+import { renderDisplay, displayError, setLoading } from './modules/display';
 
 const search = document.querySelector('#search-city');
 
@@ -8,6 +8,7 @@ const searchForCity = async (e) => {
   if (e.code === 'Enter' && query.length > 0) {
     try {
       search.value = '';
+      setLoading(true);
       const weatherData = await getData(query);
       renderDisplay(weatherData);
     } catch (error) {
@@ -15,6 +16,7 @@ const searchForCity = async (e) => {
       displayError(true);
     }
   }
+  setLoading(false);
 };
 
 const initialLoad = async () => {
