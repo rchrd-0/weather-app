@@ -68,6 +68,11 @@ main {
   color: var(--main);
 }
 
+.opacity-0 {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out
+}
+
 #details {
   width: 500px;
   display: flex;
@@ -168,7 +173,10 @@ main {
 #input-error {
   flex: 1;
   align-self: flex-end;
+  transition: 0.2s ease-in-out;
 }
+
+
 
 #forecast-week {
   margin-top: 50px;

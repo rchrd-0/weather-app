@@ -10,13 +10,6 @@ const getLocal = (time, offset) => {
   return localDate;
 };
 
-// const renderBackground = (data) => {
-//   const body = document.querySelector('body');
-//   const { time, offset } = data.weather;
-//   const localHour = Number(format(new Date(getLocal(time, offset)), 'HH'));
-//   body.dataset.hour = (localHour >= 17 || localHour <= 5) ? 0 : 1;
-// };
-
 const renderDetails = (data) => {
   const { weather } = data;
   const date = document.querySelector('#date');
@@ -51,7 +44,15 @@ const renderCurrent = (data) => {
 
 const displayError = (error) => {
   const span = document.querySelector('#input-error');
-  span.textContent = error ? 'Location not found' : '';
+  if (error) {
+    span.classList.remove('opacity-0');
+    span.textContent = 'Location not found';
+  } else {
+    span.classList.add('opacity-0');
+    setTimeout(() => {
+      span.textContent = '';
+    }, 200)
+  }
 };
 
 const renderForecast = (data) => {
@@ -78,7 +79,6 @@ const renderForecast = (data) => {
 const renderDisplay = (data) => {
   renderDetails(data);
   renderCurrent(data);
-  // renderBackground(data);
   renderForecast(data);
   displayError(false);
 };
