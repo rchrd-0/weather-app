@@ -70,8 +70,8 @@ const renderForecast = (data) => {
 
     day.textContent = i === 0 ? 'Today' : formattedDay;
     icon.textContent = daily[i].weatherIcon;
-    tempMin.textContent = daily[i].temps.min;
-    tempMax.textContent = daily[i].temps.max;
+    tempMin.textContent = `${daily[i].temps.min} °C`;
+    tempMax.textContent = `${daily[i].temps.max} °C`;
   }
 };
 
