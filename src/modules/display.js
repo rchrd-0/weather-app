@@ -33,15 +33,14 @@ const renderDetails = (data) => {
 
 const renderCurrent = (data) => {
   const { currentConditions } = data.weather;
-  // const description = document.querySelector('#description');
-  // description.textContent = currentConditions.description;
-
+  
   const currentTemp = document.querySelector('#current-temp');
   currentTemp.textContent = `${currentConditions.current} °C`;
+  const description = document.querySelector('#description');
+  description.textContent = currentConditions.description;
 
-  const conditions = document.querySelectorAll('#conditions > div');
+  const conditions = document.querySelectorAll('#conditions .value');
   const conditionValues = [
-    `${currentConditions.description}`,
     `${currentConditions.feelsLike} °C`,
     `${currentConditions.humidity} %`,
   ];
