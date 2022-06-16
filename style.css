@@ -28,8 +28,11 @@ html {
 }
 
 body {
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
+  padding: 50px;
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   background-position: center;
   background-size: cover;
@@ -60,11 +63,10 @@ input::placeholder {
 }
 
 main {
+  width: 60vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-transform: uppercase;
-  padding: 50px;
   color: var(--main);
 }
 
@@ -203,7 +205,6 @@ label[for="search-city"] {
 
 #forecast-week {
   margin-top: 50px;
-  width: 60vw;
   display: flex;
   gap: 20px;
 }
@@ -233,39 +234,39 @@ label[for="search-city"] {
 }
 
 .forecast-icon[data-weather-code="01d"] {
-  background-image: url('./assets/icons/01d.svg');
+  background-image: url("./assets/icons/01d.svg");
 }
 
 .forecast-icon[data-weather-code="02d"] {
-  background-image: url('./assets/icons/02d.svg');
+  background-image: url("./assets/icons/02d.svg");
 }
 
 .forecast-icon[data-weather-code="03d"] {
-  background-image: url('./assets/icons/03d.svg');
+  background-image: url("./assets/icons/03d.svg");
 }
 
 .forecast-icon[data-weather-code="04d"] {
-  background-image: url('./assets/icons/04d.svg');
+  background-image: url("./assets/icons/04d.svg");
 }
 
 .forecast-icon[data-weather-code="09d"] {
-  background-image: url('./assets/icons/09d.svg');
+  background-image: url("./assets/icons/09d.svg");
 }
 
 .forecast-icon[data-weather-code="10d"] {
-  background-image: url('./assets/icons/10d.svg');
+  background-image: url("./assets/icons/10d.svg");
 }
 
 .forecast-icon[data-weather-code="11d"] {
-  background-image: url('./assets/icons/11d.svg');
+  background-image: url("./assets/icons/11d.svg");
 }
 
 .forecast-icon[data-weather-code="13d"] {
-  background-image: url('./assets/icons/13d.svg');
+  background-image: url("./assets/icons/13d.svg");
 }
 
 .forecast-icon[data-weather-code="50d"] {
-  background-image: url('./assets/icons/10d50dsvg');
+  background-image: url("./assets/icons/10d50dsvg");
 }
 
 .temps {
@@ -284,10 +285,10 @@ label[for="search-city"] {
 }
 
 .temp-max {
-  background-image: url('./assets/icons/arrow-up-right.svg');
+  background-image: url("./assets/icons/arrow-up-right.svg");
 }
 .temp-min {
-  background-image: url('./assets/icons/arrow-down-left.svg');
+  background-image: url("./assets/icons/arrow-down-left.svg");
 }
 
 .opacity-0 {
@@ -296,4 +297,16 @@ label[for="search-city"] {
 
 .visibility-hidden {
   visibility: hidden;
+}
+
+footer {
+  display: flex;
+  font-weight: 300;
+  color: var(--main);
+}
+
+footer a {
+  color: #8eb1b2;
+  text-decoration: none;
+  font-weight: 500;
 }
