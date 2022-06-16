@@ -62,14 +62,14 @@ const renderForecast = (data) => {
 
   for (let i = 0; i < cards.length; i++) {
     const day = cards[i].querySelector('.day');
-    const icon = cards[i].querySelector('.icon');
+    const icon = cards[i].querySelector('.forecast-icon');
     const tempMin = cards[i].querySelector('.temp-min');
     const tempMax = cards[i].querySelector('.temp-max');
     const localDate = getLocal(daily[i].date, offset);
     const formattedDay = format(new Date(localDate), 'EEEE');
 
     day.textContent = i === 0 ? 'Today' : formattedDay;
-    icon.textContent = daily[i].weatherIcon;
+    icon.dataset.weatherCode = daily[i].weatherIcon;
     tempMin.textContent = `${daily[i].temps.min} °C`;
     tempMax.textContent = `${daily[i].temps.max} °C`;
   }
