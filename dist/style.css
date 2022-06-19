@@ -266,7 +266,7 @@ label[for="search-city"] {
 }
 
 .forecast-icon[data-weather-code="50d"] {
-  background-image: url("./assets/icons/10d50dsvg");
+  background-image: url("./assets/icons/50d.svg");
 }
 
 .temps {
